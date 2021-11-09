@@ -51,6 +51,7 @@ getELE("btnThemSP").addEventListener("click", function(){
     document.querySelector(".modal-title").innerHTML = "Add Product";
     var footerModal = `<button class="btn btn-success" onclick="addProduct()">Add</button>`;
     document.querySelector(".modal-footer").innerHTML = footerModal;
+    resetForm();
 }) 
 
 function editBtn(id) {
@@ -58,6 +59,13 @@ function editBtn(id) {
     var footerModal = `<button class="btn btn-success" onclick="editProduct('${id}')">Update</button>`;
     document.querySelector(".modal-footer").innerHTML = footerModal;
     getProductById(id);
+}
+
+function resetForm() {
+    getELE("TenSP").value = "";
+    getELE("GiaSP").value = "";
+    getELE("HinhSP").value = "";
+    getELE("MotaSP").value = "";
 }
 
 function addProduct() {
@@ -81,7 +89,6 @@ function getProductById(id) {
     apiService
         .getProductApiById(id)
         .then(function(productObj){
-            console.log(productObj);
             getELE("TenSP").value = productObj.data.tenSP;
             getELE("GiaSP").value = productObj.data.gia;
             getELE("HinhSP").value = productObj.data.hinhAnh;
