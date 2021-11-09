@@ -174,12 +174,13 @@
                 />
               </div>
               <div class="form-group">
-                <label for="">Loại sản phẩm: </label>
-                <select class="form-control" id="loaiSP">
+                <label for="MotaSP">Mô tả sản phẩm: </label>
+                <textarea id="MotaSP" cols="30" rows="10" class="form-control"></textarea>
+                <!-- <select class="form-control" id="loaiSP">
                   <option value="phone">Phone</option>
                   <option value="laptop">Laptop</option>
                   <option value="other">Other</option>
-                </select>
+                </select> -->
               </div>
             </div>
             <!-- Modal footer -->
@@ -218,6 +219,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"></script>
     <script src="../services/products-service.js"></script>
+    <script src="../models/product.js"></script>
     <script src="../controllers/index.js"></script>
   </body>
 </html>
