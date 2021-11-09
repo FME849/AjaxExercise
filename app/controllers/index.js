@@ -57,6 +57,7 @@ function editBtn(id) {
     document.querySelector(".modal-title").innerHTML = "Edit Product";
     var footerModal = `<button class="btn btn-success" onclick="editProduct('${id}')">Update</button>`;
     document.querySelector(".modal-footer").innerHTML = footerModal;
+    getProductById(id);
 }
 
 function addProduct() {
@@ -86,8 +87,24 @@ function getProductById(id) {
             getELE("HinhSP").value = productObj.data.hinhAnh;
             getELE("MotaSP").value = productObj.data.moTa;
         })
+        .catch(function(err) {
+            console.log(err);
+        })
 }
 
 function editProduct(id) {
-    getProductById(id);
+    var product = new Product();
+    product.tenSP = getELE("TenSP").value;
+    product.gia = getELE("GiaSP").value;
+    product.hinhAnh = getELE("HinhSP").value;
+    product.moTa = getELE("MotaSP").value;
+    apiService
+        .editProductApi(id, product)
+        .then(function(){
+            document.querySelector(".modal-header .close").click();
+            getListProduct();
+        })
+        .catch(function(err) {
+            console.log(err);
+        })
 }

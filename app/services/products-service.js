@@ -27,4 +27,12 @@ function ProductService() {
             method: "GET",
         });
     };
+
+    this.editProductApi = function(id, product) {
+        return axios({
+            url: `https://6183cac591d76c00172d1b4f.mockapi.io/api/products/${id}`,
+            method: "PUT",
+            data: product,
+        })
+    };
 }
